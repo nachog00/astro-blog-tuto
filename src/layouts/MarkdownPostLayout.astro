@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
 const dateString = new Date(frontmatter.pubDate).toLocaleString("en-EN", {
     year: "numeric",
@@ -8,35 +9,40 @@ const dateString = new Date(frontmatter.pubDate).toLocaleString("en-EN", {
 });
 ---
 
-<h1>{frontmatter.title}</h1>
-<p>Written by {frontmatter.author}</p>
-<p>Published on: {dateString}</p>
-<p><em>{frontmatter.description}</em></p>
-<img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-{
-    frontmatter.tags && (
-        <p class="tag-items">
-            {frontmatter.tags.map((tag: string, index: number) => (
-                <span id={`tag-${index.toString()}`} class="tag-item">
-                    {tag}
-                </span>
-            ))}
-        </p>
-    )
-}
-<slot />
+<BaseLayout
+    pageTitle={frontmatter.title}
+    description={frontmatter.description}
+    image={frontmatter.image}
+>
+    <p>Written by {frontmatter.author}</p>
+    <p>Published on: {dateString}</p>
+    <p><em>{frontmatter.description}</em></p>
+    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+    {
+        frontmatter.tags && (
+            <p class="tag-items">
+                {frontmatter.tags.map((tag: string, index: number) => (
+                    <span id={`tag-${index.toString()}`} class="tag-item">
+                        {tag}
+                    </span>
+                ))}
+            </p>
+        )
+    }
+    <slot />
 
-<style>
-    .tag-items {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5em;
-    }
-    .tag-item {
-        padding: 0.1em 0.4em;
-        border-radius: 1rem;
-        background-color: var(--accent-bg-color);
-        font-weight: 500;
-        font-size: small;
-    }
-</style>
+    <style>
+        .tag-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5em;
+        }
+        .tag-item {
+            padding: 0.1em 0.4em;
+            border-radius: 1rem;
+            background-color: var(--accent-bg-color);
+            font-weight: 500;
+            font-size: small;
+        }
+    </style>
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+type Props = {
+    id: string;
+    title: string;
+    snapAlign?: 'start' | 'center' | 'end' | 'none';
+    includeDummy?: boolean;
+};
+
+const { id, title, snapAlign = 'center', includeDummy }: Props = Astro.props;
+---
+
+<section id={id} class="content-section" style={`scroll-snap-align: ${snapAlign}`}>
+        <h2>{title}</h2>
+        <slot />
+        {includeDummy && <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis optio nihil, delectus suscipit iusto, nesciunt similique provident velit asperiores impedit deserunt natus officia eaque sunt iste! Praesentium enim itaque ex?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis optio nihil, delectus suscipit iusto, nesciunt similique provident velit asperiores impedit deserunt natus officia eaque sunt iste! Praesentium enim itaque ex?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis optio nihil, delectus suscipit iusto, nesciunt similique provident velit asperiores impedit deserunt natus officia eaque sunt iste! Praesentium enim itaque ex?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis optio nihil, delectus suscipit iusto, nesciunt similique provident velit asperiores impedit deserunt natus officia eaque sunt iste! Praesentium enim itaque ex?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis optio nihil, delectus suscipit iusto, nesciunt similique provident velit asperiores impedit deserunt natus officia eaque sunt iste! Praesentium enim itaque ex?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis optio nihil, delectus suscipit iusto, nesciunt similique provident velit asperiores impedit deserunt natus officia eaque sunt iste! Praesentium enim itaque ex?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis optio nihil, delectus suscipit iusto, nesciunt similique provident velit asperiores impedit deserunt natus officia eaque sunt iste! Praesentium enim itaque ex?
+        </p>}
+</section>
+

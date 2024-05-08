@@ -1,28 +1,29 @@
 ---
-import Header from "../components/Header.astro";
-import "../styles/global.css";
+import ContentSection from '../components/ContentSection.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Home Page";
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>Welcome to Astro</h1>
-			<p>
-				Welcome to Astro! This is a simple Astro app with a global CSS
-				file and a shared component.
-			</p>
-		</main>
-
-		<script>
-			import "../scripts/menu.js";
-		</script>
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <h2>My awesome blog subtitle</h2>
+  <ContentSection id='1' title="Dummy Section" includeDummy>
+    <p>This is the home page of my blog. It's built with Astro and deployed on Vercel.</p>
+  </ContentSection>
+  <ContentSection id='4' title="Long Section" snapAlign='start' includeDummy>
+    <p>This is a LONG section, so i configure the scroll snap to start, as center would crop the top</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
+  </ContentSection>
+  <ContentSection id='5' title="Dummy Section" snapAlign='start' includeDummy>
+    <p>This is the home page of my blog. It's built with Astro and deployed on Vercel.</p>
+  </ContentSection>
+</BaseLayout>

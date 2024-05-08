@@ -25,7 +25,7 @@ html {
   background-color: var(--white);
   color: var(--black);
   font-family: var(--font-family-main);
-  scroll-snap-type: y proximity;
+  /* scroll-snap-type: y proximity; */
   /* scroll-behavior: smooth; */
 }
 

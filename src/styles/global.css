@@ -1,6 +1,30 @@
+:root {
+  --font-size: 14px;
+  --font-family-main: 'Roboto', sans-serif;
+}
+
+.dark-mode {
+  --white: #1a202c;
+  --black: #f1f5f9;
+  --tertiary-color: #f1f5f9;
+  --quaternary-color: #e63946;
+  --accent-color: #457b9d;
+  --accent-bg-color: #457b9d61;
+}
+
+.light-mode {
+  --white: #f1f5f9;
+  --black: #1a202c;
+  --tertiary-color: #1a202c;
+  --quaternary-color: #e63946;
+  --accent-color: #457b9d;
+  --accent-bg-color: #457b9d61;
+}
+
 html {
-  background-color: #f1f5f9;
-  font-family: sans-serif;
+  background-color: var(--white);
+  color: var(--black);
+  font-family: var(--font-family-main)
 }
 
 body {

@@ -24,7 +24,9 @@
 html {
   background-color: var(--white);
   color: var(--black);
-  font-family: var(--font-family-main)
+  font-family: var(--font-family-main);
+  scroll-snap-type: y mandatory;
+  /* scroll-behavior: smooth; */
 }
 
 body {
@@ -37,6 +39,10 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+section {
+  margin: 4rem 0;
 }
 
 h1 {
@@ -75,10 +81,13 @@ h1 {
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: uppercase;
+  color: var(--accent-color);
+  transition: all 0.1s ease-in-out;
 }
 
 .nav-links a:hover, a:focus {
-  background-color: #ff9776;
+  background-color: var(--accent-bg-color);
+  transform: scale(1.05);
 }
 
 .expanded {

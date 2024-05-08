@@ -1,7 +1,23 @@
 ---
+import ContentSection from '../components/ContentSection.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "Home Page";
 ---
 <BaseLayout pageTitle={pageTitle}>
   <h2>My awesome blog subtitle</h2>
+  <ContentSection id='1' title="Dummy Section" snapAlign='center' includeDummy>
+    <p>This is the home page of my blog. It's built with Astro and deployed on Vercel.</p>
+  </ContentSection>
+  <ContentSection id='2' title="Dummy Section" snapAlign='center' includeDummy>
+    <p>This is the home page of my blog. It's built with Astro and deployed on Vercel.</p>
+  </ContentSection>
+  <ContentSection id='3' title="Dummy Section" snapAlign='end' includeDummy>
+    <p>This is the home page of my blog. It's built with Astro and deployed on Vercel.</p>
+  </ContentSection>
+  <ContentSection id='4' title="Dummy Section" snapAlign='start' includeDummy>
+    <p>This is the home page of my blog. It's built with Astro and deployed on Vercel.</p>
+  </ContentSection>
+  <ContentSection id='5' title="Dummy Section" snapAlign='start' includeDummy>
+    <p>This is the home page of my blog. It's built with Astro and deployed on Vercel.</p>
+  </ContentSection>
 </BaseLayout>

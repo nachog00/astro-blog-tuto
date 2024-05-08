@@ -1,28 +1,7 @@
 ---
-import Header from "../components/Header.astro";
-import "../styles/global.css";
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Home Page";
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>Welcome to Astro</h1>
-			<p>
-				Welcome to Astro! This is a simple Astro app with a global CSS
-				file and a shared component.
-			</p>
-		</main>
-
-		<script>
-			import "../scripts/menu.js";
-		</script>
-	</body>
-</html>
+<BaseLayout>
+  <h2>My awesome blog subtitle</h2>
+</BaseLayout>

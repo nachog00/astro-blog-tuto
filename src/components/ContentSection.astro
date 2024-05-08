@@ -2,11 +2,11 @@
 type Props = {
     id: string;
     title: string;
-    snapAlign: 'start' | 'center' | 'end' | 'none';
+    snapAlign?: 'start' | 'center' | 'end' | 'none';
     includeDummy?: boolean;
 };
 
-const { id, title, snapAlign, includeDummy }: Props = Astro.props;
+const { id, title, snapAlign = 'center', includeDummy }: Props = Astro.props;
 ---
 
 <section id={id} class="content-section" style={`scroll-snap-align: ${snapAlign}`}>

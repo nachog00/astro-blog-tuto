@@ -1,29 +1,35 @@
 ---
 import ContentSection from '../components/ContentSection.astro';
+import Greeting from '../components/Greeting';
 import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "Home Page";
+const greetings = ['Hello', 'Hi', 'Hey', 'que onda chavales', 'Hola', 'Saludos', 'Greetings'];
 ---
 <BaseLayout pageTitle={pageTitle}>
+
   <h2>My awesome blog subtitle</h2>
+  
+  <Greeting messages={greetings}>
+    <span>Greeting <b>without</b> client directive</span>
+  </Greeting>  
+  
+  <Greeting client:load messages={greetings}>
+    <span>Greeting with <b>load</b> client directive</span>
+  </Greeting>  
+  
+  <Greeting client:idle messages={greetings}>
+    <span>Greeting with <b>idle</b> client directive</span>
+  </Greeting>  
+  
+  <Greeting client:visible messages={greetings}>
+    <span>Greeting with <b>visible</b> client directive</span>
+  </Greeting>  
+  
+  <Greeting client:media="(max-width: 50em)" messages={greetings}>
+    <span>Greeting with <b>media="(max-width: 50em)"</b> client directive</span>
+  </Greeting>  
+  
   <ContentSection id='1' title="Dummy Section" includeDummy>
-    <p>This is the home page of my blog. It's built with Astro and deployed on Vercel.</p>
-  </ContentSection>
-  <ContentSection id='4' title="Long Section" snapAlign='start' includeDummy>
-    <p>This is a LONG section, so i configure the scroll snap to start, as center would crop the top</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore incidunt quaerat nesciunt minus odio hic blanditiis sed ipsam quod reiciendis, fugiat sequi quis explicabo! Porro ratione nesciunt quia repellat sed!</p>
-  </ContentSection>
-  <ContentSection id='5' title="Dummy Section" snapAlign='start' includeDummy>
     <p>This is the home page of my blog. It's built with Astro and deployed on Vercel.</p>
   </ContentSection>
 </BaseLayout>

@@ -1,6 +1,7 @@
 ---
+import type { MarkdownInstance } from 'astro';
+
 export interface Post {
-    frontmatter: {
         title: string;
         tags: string[];
         description: string;
@@ -9,12 +10,10 @@ export interface Post {
         image: {
             url: string;
             alt: string;
-        };
-    };
-    url: string;
-}
+        }
+    }
 
-interface Props extends Post{}
+interface Props extends MarkdownInstance<Post>{}
 
 const {
     url,

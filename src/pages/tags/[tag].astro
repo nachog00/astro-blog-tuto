@@ -1,4 +1,5 @@
 ---
+import type { MarkdownInstance } from "astro";
 import type { Post } from "../../components/BlogPostCard.astro";
 import BlogPostCard from "../../components/BlogPostCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -6,34 +7,34 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 /**
  * This function gets called at build time
  * it generates all the paths for posts
- * Right now it's hardcoded, but we can make it dynamic 
  */
 export async function getStaticPaths() {
-    const allPosts: any = await Astro.glob("../posts/*.md");
-
-    return [
-        { params: { tag: "astro" }, props: { posts: allPosts } },
-        { params: { tag: "successes" }, props: { posts: allPosts } },
-        { params: { tag: "community" }, props: { posts: allPosts } },
-        { params: { tag: "blogging" }, props: { posts: allPosts } },
-        { params: { tag: "setbacks" }, props: { posts: allPosts } },
-        { params: { tag: "learning in public" }, props: { posts: allPosts } },
+    // get all posts
+    const allPosts: MarkdownInstance<Post>[] =
+        await Astro.glob("../posts/*.md");
+    // get all unique tags
+    const uniqueTags = [
+        ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
     ];
+    // generate paths for each tag
+    return uniqueTags.map((tag) => {
+        const filteredPosts = allPosts.filter((post) =>
+            post.frontmatter.tags.includes(tag),
+        );
+        return {
+            params: { tag },
+            props: { posts: filteredPosts },
+        };
+    });
 }
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
-const filteredPosts = posts.filter((post: Post) =>
-    post.frontmatter?.tags.includes(tag),
-);
-
 ---
 
 <BaseLayout pageTitle={tag}>
     <p>Posts tagged with <b>{tag}</b></p>
     <ul class="flex flex-col gap-2">
-        {
-            filteredPosts.map((post: Post) => <BlogPostCard { ...post} />)
-        }
+        {posts.map((post) => <BlogPostCard {...post} />)}
     </ul>
 </BaseLayout>

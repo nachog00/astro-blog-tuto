@@ -3,16 +3,17 @@
   --font-family-main: 'Roboto', sans-serif;
 }
 
-.dark-mode {
+.dark {
   --white: #1a202c;
   --black: #f1f5f9;
   --tertiary-color: #f1f5f9;
   --quaternary-color: #e63946;
-  --accent-color: #457b9d;
-  --accent-bg-color: #457b9d61;
+  --accent-color: #47b5d9;
+  --accent-bg-color: #d7ffffbc;
+  --accent-bg-color-hover: #62c3fff3;
 }
 
-.light-mode {
+.light {
   --white: #f1f5f9;
   --black: #1a202c;
   --tertiary-color: #1a202c;
@@ -25,7 +26,7 @@ html {
   background-color: var(--white);
   color: var(--black);
   font-family: var(--font-family-main);
-  scroll-snap-type: y proximity;
+  /* scroll-snap-type: y proximity; */
   /* scroll-behavior: smooth; */
 }
 

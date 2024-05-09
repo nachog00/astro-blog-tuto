@@ -17,12 +17,22 @@ const dateString = new Date(frontmatter.pubDate).toLocaleString("en-EN", {
     <p>Written by {frontmatter.author}</p>
     <p>Published on: {dateString}</p>
     <p><em>{frontmatter.description}</em></p>
-    <img class="my-2" src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+    <img
+        class="my-2"
+        src={frontmatter.image.url}
+        width="300"
+        alt={frontmatter.image.alt}
+    />
     {
         frontmatter.tags && (
-            <p class="tag-items my-2">
+            <p class="flex flex-wrap gap-1 my-2">
                 {frontmatter.tags.map((tag: string, index: number) => (
-                    <a href={`/tags/${tag}`} id={`tag-${index.toString()}`} class="tag-item">
+                    <a
+                        href={`/tags/${tag}`}
+                        id={`tag-${index.toString()}`}
+                        class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center"
+                    >
+                        <span class="text-sm">#</span>
                         {tag}
                     </a>
                 ))}
@@ -30,24 +40,4 @@ const dateString = new Date(frontmatter.pubDate).toLocaleString("en-EN", {
         )
     }
     <slot />
-
-    <style>
-        .tag-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5em;
-        }
-        .tag-item {
-            padding: 0.1em 0.5em;
-            border-radius: 1rem;
-            background-color: var(--accent-bg-color);
-            color: var(--white);
-            font-weight: 500;
-            font-size: small;
-        }
-
-        .tag-item:hover {
-            background-color: var(--accent-bg-color-hover);
-        }
-    </style>
 </BaseLayout>

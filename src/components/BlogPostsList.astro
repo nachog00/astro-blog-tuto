@@ -1,12 +1,12 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import BlogPostCard from "./BlogPostCard.astro";
+import { uniquefyBlogProp, type Post } from "../pages/posts/[...slug].astro";
 interface Props {
-    posts: CollectionEntry<"posts">[];
+    posts: Post[];
 }
 const { posts } = Astro.props;
 ---
 
 <ul class="flex flex-col gap-2 items-center w-full">
-    {posts.map((post) => <BlogPostCard post={post} />)}
+    {posts.map((post) => <BlogPostCard post={post} propSlugifier={uniquefyBlogProp(post)} />)}
 </ul>

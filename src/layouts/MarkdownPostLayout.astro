@@ -1,21 +1,29 @@
 ---
 import TagButton from "../components/TagButton.astro";
+import type { Post, PostPropSlugifier } from "../pages/posts/[...slug].astro";
 import "../styles/global.css";
 import BaseLayout from "./BaseLayout.astro";
-const { frontmatter } = Astro.props;
-const dateString = new Date(frontmatter.pubDate).toLocaleString("en-EN", {
+import type { CollectionEntry } from "astro:content";
+interface Props {
+    post: CollectionEntry<'posts'>
+    propSlugifier: PostPropSlugifier
+}
+const { post: { data, slug} , propSlugifier: slugify } = Astro.props;
+const dateString = new Date(data.pubDate).toLocaleString("en-EN", {
     year: "numeric",
     month: "long",
     day: "numeric",
 });
-const { title, description, imageUrl , imageAlt, author, tags } = frontmatter;
+const { title, description, imageUrl , imageAlt, author, tags } = data;
+
 ---
 
-<BaseLayout pageTitle={title} description={description}>
-    <p>Written by {author}</p>
-    <p>Published on: {dateString}</p>
-    <p><em>{description}</em></p>
-    <img class="my-2" src={imageUrl} width="300" alt={imageAlt} />
+<BaseLayout pageTitle="" description={description}>
+    <h1 transition:name={slugify('title')}>{title}</h1>
+    <p>Written by <span transition:name={slugify('author')}>{author}</span></p>
+    <p transition:name={slugify('pubDate')}>Published on: <span>{dateString}</span></p>
+    <p transition:name={slugify('description')}><em>{description}</em></p>
+    <img class="my-2" src={imageUrl} width="300" alt={imageAlt} transition:name={imageUrl} />
     {
         tags && (
             <p class="flex flex-wrap gap-1 my-2">

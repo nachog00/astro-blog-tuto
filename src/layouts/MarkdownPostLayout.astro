@@ -21,7 +21,7 @@ const { title, description, imageUrl , imageAlt, author, tags } = data;
 <BaseLayout pageTitle="" description={description}>
     <h1 transition:name={slugify('title')}>{title}</h1>
     <p>Written by <span transition:name={slugify('author')}>{author}</span></p>
-    <p transition:name={slugify('pubDate')}>Published on: <span>{dateString}</span></p>
+    <p transition:name={slugify('pubDate')}>{dateString}</p>
     <p transition:name={slugify('description')}><em>{description}</em></p>
     <img class="my-2" src={imageUrl} width="300" alt={imageAlt} transition:name={imageUrl} />
     {

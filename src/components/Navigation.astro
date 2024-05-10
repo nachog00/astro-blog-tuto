@@ -1,10 +1,21 @@
 ---
-
+const currentPath = Astro.url.pathname
+const active = (path: typeof currentPath) => currentPath.startsWith(path) && path !== '/'
+console.log(currentPath)
+const links = [
+    { path: '/', name: 'Home' },
+    { path: '/about/', name: 'About' },
+    { path: '/blog/', name: 'Blog' },
+    { path: '/tags/', name: 'Tags' },
+]
+const activeStyle = 'underline underline-offset-3 decoration-2 decoration-blue-400 dark:decoration-pink-600'
+const inactiveStyle = ''
 ---
 
 <nav class="nav-links">
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
-    <a href="/tags/">Tags</a>
+    {
+        links.map(({ path, name }) => (
+            <a href={path} class={active(path) ? activeStyle : inactiveStyle}>{name}</a>
+        ))
+    }
 </nav>

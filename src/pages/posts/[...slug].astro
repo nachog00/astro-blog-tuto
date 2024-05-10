@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
+import type { CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
     const blogEntries = await getCollection("posts");
@@ -10,10 +11,17 @@ export async function getStaticPaths() {
     }));
 }
 
+export type Post = CollectionEntry<"posts">;
+
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+export const uniquefyBlogProp = (post: Post) => {
+    return (prop: keyof Post["data"]) => `$${post.slug}--blog--${prop}`.replace(/[^a-z0-9-]/gi, "");
+};
+const slugifier = uniquefyBlogProp(entry);
+export type PostPropSlugifier = typeof slugifier;
 ---
 
-<MarkdownPostLayout frontmatter={entry.data}>
+<MarkdownPostLayout post={entry} propSlugifier={slugifier}>
     <Content />
 </MarkdownPostLayout>

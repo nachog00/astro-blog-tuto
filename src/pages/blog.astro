@@ -1,13 +1,15 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import '../styles/global.css'
+import '../styles/global.css';
+import BlogPostsList from "../components/BlogPostsList.astro";
+
+const pageTitle = "Blogs";
+const posts = await getCollection("posts");
 ---
-<BaseLayout pageTitle="Blogs">
+<BaseLayout pageTitle={pageTitle}>
   <p>This is where I will post about my journey learning Astro.</p>
 
-  <ul>
-    <li><a href="/posts/post-1/">Post 1</a></li>
-    <li><a href="/posts/post-2/">Post 2</a></li>
-    <li><a href="/posts/post-3/">Post 3</a></li>
-  </ul>
+  <BlogPostsList posts={posts} />
+  
 </BaseLayout>

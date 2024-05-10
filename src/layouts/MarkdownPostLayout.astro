@@ -1,4 +1,5 @@
 ---
+import TagButton from "../components/TagButton.astro";
 import "../styles/global.css";
 import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
@@ -7,34 +8,19 @@ const dateString = new Date(frontmatter.pubDate).toLocaleString("en-EN", {
     month: "long",
     day: "numeric",
 });
+const { title, description, imageUrl , imageAlt, author, tags } = frontmatter;
 ---
 
-<BaseLayout
-    pageTitle={frontmatter.title}
-    description={frontmatter.description}
-    image={frontmatter.image}
->
-    <p>Written by {frontmatter.author}</p>
+<BaseLayout pageTitle={title} description={description}>
+    <p>Written by {author}</p>
     <p>Published on: {dateString}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <img
-        class="my-2"
-        src={frontmatter.image.url}
-        width="300"
-        alt={frontmatter.image.alt}
-    />
+    <p><em>{description}</em></p>
+    <img class="my-2" src={imageUrl} width="300" alt={imageAlt} />
     {
-        frontmatter.tags && (
+        tags && (
             <p class="flex flex-wrap gap-1 my-2">
-                {frontmatter.tags.map((tag: string, index: number) => (
-                    <a
-                        href={`/tags/${tag}`}
-                        id={`tag-${index.toString()}`}
-                        class="bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center"
-                    >
-                        <span class="text-sm">#</span>
-                        {tag}
-                    </a>
+                {tags.map((tag: string, index: number) => (
+                    <TagButton tag={tag} />
                 ))}
             </p>
         )

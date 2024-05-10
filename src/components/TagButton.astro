@@ -1,0 +1,51 @@
+---
+interface Props {
+    tag: string;
+}
+const { tag } = Astro.props;
+---
+
+<a
+    href={`/tags/${tag}`}
+    class="tag-link-btn my-1 bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center"
+>
+    <span class="hash text-sm">#</span>
+    <span>
+        {tag}
+    </span>
+</a>
+
+<style>
+    a.tag-link-btn:hover {
+        background-image: linear-gradient(
+            to right,
+            var(--accent-color),
+            transparent
+        );
+        background-position: 0 150%;
+        background-repeat: no-repeat;
+        background-size: 250% 100%;
+        transition: background-position 0.25s ease-in-out;
+        animation: colorAnimation 0.5s ease-in-out forwards;
+    }
+
+    a.tag-link-btn:hover span.hash {
+        color: var(--accent-color);
+    }
+
+    a.tag-link-btn:hover span:not(.hash) {
+        color: var(--accent-color);
+        animation: colorAnimation 0.5s ease-in-out forwards;
+    }
+
+    @keyframes colorAnimation {
+        0% {
+            background-position: 0 100%;
+            color: var(--accent-color);
+        }
+        100% {
+            background-position: 100% 100%;
+            color: var(--black);
+        }
+    }
+</style>
